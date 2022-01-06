@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="row">
+    <div class="col-md-6">
+
+        <ol>
+{% for i in dict_table_value%}
+    <li>
+
+        <a href="{% url 'details_page' i.id %}"> <h2>
+            {{i.Title}}
+
+
+        </h2></a>
+
+    </li>
+
+{% endfor%}
+
+ </ol>
+
+    </div>
+
+  <form method="POST" action="Entry_on_table">  {% csrf_token %}
+<button >
+click to add description
+
+</button>
+</form>
+
+
+
+    <div class="col-md-6">
+        <ol>
+{% for i in dict_table_value%}
+    <li>
+
+
+
+
+        <form method="POST" action="{% url 'see_details_monna' %}">  {% csrf_token %}
+        <input type="hidden" value="{{i.id}}" name="get_id">
+        <button type="submit">
+        see {{i.Title}}
+
+        </button>
+        </form>
+
+    </li>
+
+{% endfor%}
+
+ </ol>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
